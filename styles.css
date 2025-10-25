@@ -1,6 +1,7 @@
 /* Fichier: components.css */
 
 /* Bouton d'Action Principal (CTA) */
+/* L4: Conflit ici */
 .cta-btn {
     background-color: var(--color-blue-green);
     border: none;
@@ -32,4 +33,10 @@
 }
 .product-card:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+/* Style ajouté par Lrigobert (Commit 2) */
+.custom-footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 0.9rem;
 }
