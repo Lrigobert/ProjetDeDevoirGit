@@ -1,0 +1,12 @@
+// Fichier: data.json (Utilisé par script.js pour la page dynamique)
+
+{
+    "team": "Lrigobert_Groupe",
+    "project_name": "Aurora Shop E-Commerce",
+    "required_files":7.77,
+    "current_status": "Base de code déployée (Thème Boréal)",
+    "products": [
+        {"id": 1, "name": "Bracelet Boréal"},
+        {"id": 2, "name": "Collier Vert Arctique"}
+    ]
+}
