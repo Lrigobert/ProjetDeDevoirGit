@@ -1,0 +1,39 @@
+name: Revue de Code Gemini
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened] # Se déclenche à l'ouverture et mise à jour d'une PR
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Récupérer le code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Exécuter un script ou une action IA
+      - name: Simuler la Critique de Code par l'IA
+        # NOTE : Le secret GEMINI_API_KEY doit être configuré sur ce dépôt (Étape 2).
+        env:
+          # Nous passons la clé API pour le script d'appel.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PR_AUTHOR: ${{ github.actor }}
+
+        run: |
+          # Dans un vrai scénario, un script appellerait l'API Gemini ici.
+          # Pour la démonstration, nous simulons la réponse pour confirmer que le workflow est lancé.
+
+          REVIEW_COMMENT="## 🤖 Critique de Code par Gemini (Automatisé)\n\n@${{ env.PR_AUTHOR }}, le modèle d'IA a exécuté son analyse sur cette Pull Request.\n\n### Résultats de la Critique :\n\n- **Qualité Générale** : Le code est propre.\n- **Suggestions** : Pensez à ajouter des commentaires pour la fonction 'main' afin d'améliorer la documentation.\n\nMerci de votre contribution !"
+
+          # Cette partie simule l'enregistrement de l'analyse.
+          echo "$REVIEW_COMMENT" > review_output.md
+
+          # Si vous aviez l'accès à une action qui poste le commentaire, ce serait ici.
+          # Ex: curl -X POST -H "Authorization: token $GITHUB_TOKEN" ...
+
+      # 3. Afficher le résultat dans les logs (pour la preuve)
+      - name: Afficher le Résultat de la Revue
+        run: cat review_output.md
